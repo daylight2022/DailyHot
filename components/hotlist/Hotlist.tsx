@@ -19,7 +19,7 @@ const Hostlist = async () => {
 	}
 
 	return (
-		<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+		<div className="mx-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2">
 			{apiPaths.map((item, index) => (
 				<HotlistCard key={item.name} apiName={item.name} apiPath={item.path} />
 			))}
