@@ -43,7 +43,7 @@ const HotListCard = ({ apiName, apiPath }: { apiName: string; apiPath: string })
 	}
 
 	return (
-		<Card className="max-w-[360px] max-h-[430px]">
+		<Card className="max-h-[430px] text-[15px]">
 			<CardHeader className="justify-between">
 				<div className="flex gap-2">
 					<Avatar
@@ -56,25 +56,25 @@ const HotListCard = ({ apiName, apiPath }: { apiName: string; apiPath: string })
 				</div>
 				<span className="text-xs font-light">{data.type}</span>
 			</CardHeader>
-			<CardBody className="px-3 py-0 text-gray-900 dark:text-white">
+			<CardBody className="px-3 py-0 text-zinc-900 dark:text-white">
 				<ul>
 					{data.data.map((item, index) => (
 						<li key={index} className="flex items-center gap-2 my-2">
 							<div
-								className={`w-6 h-6 p-2 text-slate-50 text-xs flex items-center justify-center rounded-lg ${
+								className={`w-6 h-6 p-2 text-zinc-50 text-xs flex items-center justify-center rounded-lg ${
 									index === 0
 										? 'bg-red-500 '
 										: index === 1
 										? 'bg-orange-500 '
 										: index === 2
 										? 'bg-yellow-500 '
-										: 'bg-gray-200 text-slate-700 dark:bg-gray-700 dark:text-slate-200'
+										: 'bg-zinc-200 text-zinc-700 dark:bg-zinc-700 dark:text-zinc-200'
 								}`}>
 								{index + 1}
 							</div>
 							<a
 								href={item.url}
-								className="underline-animation text-sm font-normal text-slate-700 dark:text-slate-200 hover:translate-x-[3px] duration-200 transition-all">
+								className="underline-animation text-sm font-normal text-zinc-700 dark:text-zinc-200 hover:tranzinc-x-[3px] duration-200 transition-all">
 								{item.title}
 							</a>
 						</li>
@@ -83,17 +83,17 @@ const HotListCard = ({ apiName, apiPath }: { apiName: string; apiPath: string })
 			</CardBody>
 			<CardFooter className="justify-between">
 				<div className="flex gap-1">
-					<p className="text-slate-500 dark:text-slate-400 text-xs font-light">{getTimeDifference(data.updateTime)}</p>
+					<p className="text-zinc-500 dark:text-zinc-400 text-xs font-light">{getTimeDifference(data.updateTime)}</p>
 				</div>
 				<div className="flex gap-1">
 					<Tooltip placement="top" content="查看更多" closeDelay={100}>
-						<div className="w-8 h-6 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 cursor-pointer">
+						<div className="w-8 h-6 flex items-center justify-center rounded-xl bg-zinc-100 dark:bg-zinc-800 cursor-pointer">
 							<IoIosMore />
 						</div>
 					</Tooltip>
 					<Tooltip placement="top" content="获取最新" closeDelay={100}>
 						<div
-							className="w-8 h-6 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 cursor-pointer"
+							className="w-8 h-6 flex items-center justify-center rounded-xl bg-zinc-100 dark:bg-zinc-800 cursor-pointer"
 							onClick={() => fetchData(apiPath)}>
 							<MdOutlineRefresh />
 						</div>
