@@ -8,6 +8,7 @@ import { RouteData } from '@/types/route';
 import { API_BASE_URL } from '@/config';
 import { getTimeDifference } from '@/utils/timeUtils';
 import { VscError } from 'react-icons/vsc';
+import Link from 'next/link';
 
 const HotListCard = ({ apiName, apiPath }: { apiName: string; apiPath: string }) => {
 	const [data, setData] = useState<RouteData | null>(null);
@@ -23,7 +24,6 @@ const HotListCard = ({ apiName, apiPath }: { apiName: string; apiPath: string })
 				throw new Error('Network response was not ok');
 			}
 			const result = await response.json();
-			// await new Promise((resolve) => setTimeout(resolve, 500));
 			setData(result); // Store fetched data in state
 		} catch (error) {
 			if (error instanceof Error) {
@@ -38,7 +38,9 @@ const HotListCard = ({ apiName, apiPath }: { apiName: string; apiPath: string })
 	};
 
 	useEffect(() => {
-		fetchData(apiPath); // Fetch data when component mounts
+		if (apiPath) {
+			fetchData(apiPath); // Fetch data when component mounts
+		}
 	}, [apiPath]);
 
 	return (
@@ -63,7 +65,7 @@ const HotListCard = ({ apiName, apiPath }: { apiName: string; apiPath: string })
 				</div>
 				<Skeleton isLoaded={!loading} className="w-14 h-5 rounded-lg">
 					{!loading && data ? (
-						<div className="text-xs font-light">{data?.type}</div>
+						<div className="text-xs font-light flex justify-end">{data?.type}</div>
 					) : (
 						<Skeleton className="w-15 h-5 rounded-lg" />
 					)}
@@ -121,7 +123,7 @@ const HotListCard = ({ apiName, apiPath }: { apiName: string; apiPath: string })
 									</div>
 									<a
 										href={item.url}
-										className="underline-animation text-sm font-normal text-zinc-700 dark:text-zinc-200 hover:tranzinc-x-[3px] duration-200 transition-all">
+										className="underline-animation text-sm font-normal text-zinc-700 dark:text-zinc-200 hover:translate-x-[3px] duration-200 transition-all">
 										{item.title}
 									</a>
 								</li>
@@ -141,7 +143,9 @@ const HotListCard = ({ apiName, apiPath }: { apiName: string; apiPath: string })
 				<div className="flex gap-1">
 					<Tooltip placement="top" content="查看更多" closeDelay={100}>
 						<div className="w-8 h-6 flex items-center justify-center rounded-xl bg-zinc-100 dark:bg-zinc-800 cursor-pointer">
-							<IoIosMore />
+							<Link href={`/list/${apiPath}`}>
+								<IoIosMore />
+							</Link>
 						</div>
 					</Tooltip>
 					<Tooltip placement="top" content="获取最新" closeDelay={100}>

@@ -4,7 +4,7 @@
 
 @layer base {
 	:root {
-		--background: 0 0% 100%;
+		--background: 0 1.8% 97.8%;
 		--foreground: 222.2 84% 4.9%;
 
 		--card: 0 0% 100%;
@@ -91,14 +91,14 @@
 	width: 100%;
 	height: 2px; /* 下划线的高度 */
 	background-color: #d1d5db; /* 下划线的颜色 */
-	transform: translateX(-102%);
+	transform: translateX(-100%);
 	transition: transform 0.3s ease-in-out;
 }
 
 .underline-animation:hover::after {
-	transform: translateX(0) translateY(0.5px);
+	transform: translateX(0);
 }
 
 .underline-animation:not(:hover)::after {
-	transform: translateX(-102%);
+	transform: translateX(-100%);
 }
