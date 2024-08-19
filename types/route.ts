@@ -4,7 +4,7 @@ export type ListItem = {
 	title: string;
 	cover?: string;
 	author?: string;
-	description: string;
+	desc: string;
 	hot: number | null;
 	timestamp: number | string | null;
 	url: string;
